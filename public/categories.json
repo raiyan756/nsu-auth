@@ -1,0 +1,94 @@
+[
+    {
+        "id": "0",
+        "book-name": "The Great Gatsby",
+        "book-location": "Fiction Section",
+        "book-image": "https://i.ibb.co/mtCXY3Z/a1.jpg",
+        "author-name": "F. Scott Fitzgerald"
+    },
+    {
+        "id": "1",
+        "book-name": "To Kill a Mockingbird",
+        "book-location": "Classics Section",
+        "book-image": "https://i.ibb.co/W2fND2r/a2.png",
+        "author-name": "Harper Lee"
+    },
+    {
+        "id": "2",
+        "book-name": "Pride and Prejudice",
+        "book-location": "Romance Section",
+        "book-image": "https://i.ibb.co/Swyvjp3/a3.jpg",
+        "author-name": "Jane Austen"
+    },
+    {
+        "id": "3",
+        "book-name": "1984",
+        "book-location": "Dystopian Section",
+        "book-image": "https://i.ibb.co/dPMchSg/images-1.jpg",
+        "author-name": "George Orwell"
+    },
+    {
+        "id": "4",
+        "book-name": "The Catcher in the Rye",
+        "book-location": "Classics Section",
+        "book-image": "https://i.ibb.co/MDFVfhc/images.jpg",
+        "author-name": "J.D. Salinger"
+    },
+    {
+        "id": "5",
+        "book-name": "Harry Potter and the Sorcerer's Stone",
+        "book-location": "Fantasy Section",
+        "book-image": "https://i.ibb.co/FxfSjdD/istockphoto-1092170968-612x612.jpg",
+        "author-name": "J.K. Rowling"
+    },
+    {
+        "id": "6",
+        "book-name": "The Hobbit",
+        "book-location": "Fantasy Section",
+        "book-image": "https://i.ibb.co/pLmBg0q/360-F-49713581-8k-Dklyv-Fq-PNa-AP4-CUl-S5gp-Cc-XKg-ZGQw-E.jpg",
+        "author-name": "J.R.R. Tolkien"
+    },
+    {
+        "id": "7",
+        "book-name": "The Hunger Games",
+        "book-location": "Dystopian Section",
+        "book-image": "https://i.ibb.co/LSwVKsH/old-history-book-by-smith-muzzey-lloyd-BAGHTM.jpg",
+        "author-name": "Suzanne Collins"
+    },
+    {
+        "id": "8",
+        "book-name": "Don Quixote",
+        "book-location": "Dystopian Section",
+        "book-image": "https://i.ibb.co/W2fND2r/a2.png",
+        "author-name": "Suzanne Collins"
+    },
+    {
+        "id": "9",
+        "book-name": "Alice's Adventures in Wonderland",
+        "book-location": "Dystopian Section",
+        "book-image": "https://i.ibb.co/LSwVKsH/old-history-book-by-smith-muzzey-lloyd-BAGHTM.jpg",
+        "author-name": "Suzanne Collins"
+    },
+    {
+        "id": "10",
+        "book-name": "A Tale of Two Cities",
+        "book-location": "Dystopian Section",
+        "book-image": "https://i.ibb.co/Swyvjp3/a3.jpg",
+        "author-name": "Suzanne Collins"
+    },
+    {
+        "id": "11",
+        "book-name": "Jane Eyre",
+        "book-location": "Dystopian Section",
+        "book-image": "https://i.ibb.co/W2fND2r/a2.png",
+        "author-name": "Suzanne Collins"
+    },
+    {
+        "id": "12",
+        "book-name": "The Scarlet Letter",
+        "book-location": "Dystopian Section",
+        "book-image": "https://i.ibb.co/dPMchSg/images-1.jpg",
+        "author-name": "Suzanne Collins"
+    }
+
+]

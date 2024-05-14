@@ -1,0 +1,39 @@
+/* Showcard.css */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background-color: #87f8ba;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(23, 118, 207, 0.1);
+    width: 400px;
+}
+
+.card-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-photo {
+    width: 59%;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-info {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
