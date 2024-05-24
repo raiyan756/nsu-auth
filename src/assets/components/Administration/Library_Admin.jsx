@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-const Books_admin = () => {
+const Library_Admin = () => {
     const handleadmin=e=>{
       
         e.preventDefault();
@@ -22,13 +22,28 @@ const Books_admin = () => {
         })
         .then(res=>res.json())
         .then(datas=>{
+          
             console.log(datas);
         })
+        .then(() => {
+          toast.success('Please Verify E-mail Address', {
+  position: 'top-center',
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+});
+          //navigate(location?.state ? location.state : "/dashboard"); // Navigating to /dashboard
+      })
 
 
     }
     return (
-        <div>
+        
+             <div>
+              <ToastContainer/>
             <div className="container mx-auto mt-8">
         <h2 className="text-2xl font-bold mb-4 text-center">User Information Form</h2>
         <br />
@@ -61,14 +76,15 @@ const Books_admin = () => {
           
           
           <br /><br />
-          <NavLink to='/req-books'><button className="btn btn-active btn-neutral">Show Request</button></NavLink>
+        
           
         </form>
       </div>
 
       
         </div>
+       
     );
 };
 
-export default Books_admin;
+export default Library_Admin;

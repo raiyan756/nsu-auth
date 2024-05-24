@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../../Providers/AuthProvider';
+
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import "./Foodorder.css";
 import { FaShoppingBag } from "react-icons/fa";
@@ -8,26 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 const Foodorder = () => {
     const foods = useLoaderData();
     console.log(foods);
-    const { logIn } = useContext(AuthContext);
+    
     const navigate = useNavigate();
 
     // State to store selected foods
     const [selectedFoods, setSelectedFoods] = useState([]);
 
-    const handleLogin = e => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-        logIn(email, password)
-            .then(result => {
-                navigate("/food-admin");
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
+   
 
     // Function to handle adding a food to the cart
     const handleAddToCart = (food) => {
@@ -51,14 +38,7 @@ const Foodorder = () => {
     return (
         <div className="container">
             <ToastContainer></ToastContainer>
-            <div className="login-section">
-                <h1 className="text-center mb-8">User Admin Login</h1>
-                <form onSubmit={handleLogin} className="login-form">
-                    <input className="input-field" type="email" name="email" placeholder="Enter Email" required />
-                    <input className="input-field" type="password" name="password" placeholder="Enter Password" required />
-                    <button className="btn-primary" type="submit">Login</button>
-                </form>
-            </div>
+           
             
          <div className="total-price">
                 <button className="btn bg-red-400" onClick={handleViewFoods}><FaShoppingBag className='w-14 h-8'>View</FaShoppingBag></button> {/* Button to navigate to "Selected Foods" route */}

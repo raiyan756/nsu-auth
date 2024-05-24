@@ -21,7 +21,7 @@ const Dashboard = () => {
             <div className="hidden lg:block w-72 bg-blue-500 text-white">
                 <div className="flex flex-col h-full py-96">
                     <div className="p-6">
-                        {user && (
+                        { (
                             <button onClick={handleSignOut} className="flex items-center space-x-2 px-24 py-2 bg-white text-blue-500 rounded-md">
                                 Log Out <FiLogOut />
                             </button>

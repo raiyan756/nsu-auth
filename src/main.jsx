@@ -22,45 +22,45 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <ProtectedRoute><Dashboard></Dashboard></ProtectedRoute>,
     
   },
   {
     path:'/temporayid',
-    element:<Tid></Tid>
+    element:<ProtectedRoute><Tid></Tid></ProtectedRoute>
   },
   {
     path:'/permission',
-    element:<Permission></Permission>,
+    element:<ProtectedRoute><Permission></Permission></ProtectedRoute>,
     loader :()=>fetch('http://localhost:5000/usecase')
     
   },
   {
     path:'/guest_permission',
-    element:<Guestpermission></Guestpermission>
+    element:<ProtectedRoute><Guestpermission></Guestpermission></ProtectedRoute>
 
   },
   {
     path:'/permission_grand',
-    element:<Permission_Granted></Permission_Granted>,
+    element:<ProtectedRoute><Permission_Granted></Permission_Granted></ProtectedRoute>,
     loader :()=>fetch('http://localhost:5000/guest')
   },{
     path:'/library-book',
-    element:<Librarybook></Librarybook>,
+    element:<ProtectedRoute><Librarybook></Librarybook></ProtectedRoute>,
     loader: () => fetch('categories.json').then(response => response.json())
   },
   {
     path:'/order-food',
-    element:<Foodorder></Foodorder>,
+    element:<ProtectedRoute><Foodorder></Foodorder></ProtectedRoute>,
     loader:()=>fetch('http://localhost:5000/food-admin')
   },
   {
     path:'/food-admin',
-    element:<FoodAdmin></FoodAdmin>
+    element:<Adminpro><Food_admininstration></Food_admininstration></Adminpro>
   },
   {
     path:'/selected-foods',
-    element:<SelectedFood></SelectedFood>
+    element:<ProtectedRoute><SelectedFood></SelectedFood></ProtectedRoute>
   },
   {
     path:'/success',
@@ -72,21 +72,21 @@ const router = createBrowserRouter([
   },
   {
     path:'/lost-found',
-    element:<LostCards></LostCards>,
+    element:<ProtectedRoute><LostCards></LostCards></ProtectedRoute>,
     loader:()=>fetch('http://localhost:5000/lost-admin')
   },
   {
     path:'/lost-admin',
-    element:<Lost_Admin></Lost_Admin>
+    element:<Adminpro><Lost$found_admin></Lost$found_admin></Adminpro>
   },
   {
     path:'/Lib-Books-Rent',
-    element:<Books></Books>,
+    element:<ProtectedRoute><Books></Books></ProtectedRoute>,
     loader:()=>fetch('http://localhost:5000/book-admin')
   },
   {
     path:'/Books-admin',
-    element:<Books_admin></Books_admin>
+    element:<Adminpro><Books_admin></Books_admin></Adminpro>
   },
   {
     path:'/req-books',
@@ -94,26 +94,35 @@ const router = createBrowserRouter([
   },
   {
     path:'/canteen-card',
-    element:<Canteencard></Canteencard>
+    element:<ProtectedRoute><Canteencard></Canteencard></ProtectedRoute>
   },
   {
     path:'/show-cards',
-    element:<Showcard></Showcard>,
+    element:<ProtectedRoute><Showcard></Showcard></ProtectedRoute>,
     loader:()=>fetch('http://localhost:5000/centeen-card')
   },
   {
     path:'/admin-login',
-    element:<CanteenAdmin></CanteenAdmin>
+    element:<Adminpro><Showcard></Showcard></Adminpro>
 
   },
   {
+    path:'/administration',
+    element:<Administration></Administration>
+  },
+ 
+  {
     path:'/admin-panel',
-    element:<Adminpanel></Adminpanel>,
+    element:<Adminpro><ControlDigitalCanteenCard></ControlDigitalCanteenCard></Adminpro>,
     loader:()=>fetch('http://localhost:5000/centeen-card')
   },
   {
+      path:'/admin-dashboard',
+      element:<Adminpro><Admin_Dash></Admin_Dash></Adminpro>
+  },
+  {
     path: '/update-card/:id',
-    element: <Updatepanel />,
+    element: <Admin_Dash></Admin_Dash>,
     loader: async ({ params }) => {
         const response = await fetch(`http://localhost:5000/centeen-card/${params.id}`);
         if (!response.ok) {
@@ -121,7 +130,8 @@ const router = createBrowserRouter([
         }
         return response.json();
     }
-}
+},
+
 
 
   
@@ -150,9 +160,18 @@ import RequestBooks from './assets/components/Library_Book_Rent/RequestBooks';
 import Canteencard from './assets/components/Canteen-card/Canteencard';
 import Showcard from './assets/components/Canteen-card/Showcard';
 import CanteenAdmin from './assets/components/Canteen-card/CanteenAdmin';
-import Adminpanel from './assets/components/Canteen-card/Adminpanel';
+
 import Updatepanel from './assets/components/Canteen-card/Updatepanel';
 import { BookProvider } from './assets/components/Library_Book_Rent/BookContext';
+import Administration from './assets/components/Login/Administration';
+import Admin_Dash from './assets/components/Dashboard/Admin_Dash';
+import Library_Admin from './assets/components/Administration/Library_Admin';
+import Food_admininstration from './assets/components/Administration/Food_admininstration';
+import Lost$found_admin from './assets/components/Administration/Lost$found_admin';
+import ControlDigitalCanteenCard from './assets/components/Administration/ControlDigitalCanteenCard';
+import ProtectedRoute from './assets/components/protectedRoute/ProtectedRoute';
+import Adminpro from './assets/components/protectedRoute/Adminpro';
+
 
 
 
@@ -162,7 +181,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div className='max-w-screen-xl bg-white mx-auto'>
       <AuthProvider>
-        <BookProvider> {/* Wrap your application with BookProvider */}
+        <BookProvider>
           <RouterProvider router={router} />
         </BookProvider>
       </AuthProvider>

@@ -35,38 +35,10 @@ const Login = () => {
             });
     }
 
-    const handleSignInGoogle = () => {
-        const provider = new GoogleAuthProvider();
 
-        googleSignIn(provider)
-            .then(Result => {
-                const userInfo = {
-                    photoURL: Result.user.photoURL,
-                    name: Result.user.displayName,
-                    email: Result.user.email
-                }
-                fetch('http://localhost:5000/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(userInfo)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            toast('Sign in with Google successful');
-                        }
-                    });
-                navigate(location?.state || "/dashboard");
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 bg-[url('https://i.ibb.co/jg522Rn/326850.png')] bg-cover bg-center bg-blend-overlay">
             <h2 className="text-3xl font-bold mb-4">NSU Automation System</h2>
             <br />
             <div className="bg-white rounded-lg shadow-md p-8 max-w-md w-full">
@@ -89,6 +61,9 @@ const Login = () => {
                 </form>
                 <div className="text-center mt-6">
                     <p className="text-gray-600">New on our platform? <NavLink to="/registration" className="text-blue-500">Create Account</NavLink></p>
+                </div>
+                <div>
+                <p className="text-gray-600 left-32 relative"> <NavLink to='/administration' className="text-blue-500">Or Log in As Admin</NavLink></p>
                 </div>
             </div>
         </div>

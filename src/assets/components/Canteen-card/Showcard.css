@@ -7,9 +7,9 @@
 }
 
 .card {
-    background-color: #87f8ba;
+    background-color: hwb(240 47% 49% / 0);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(23, 118, 207, 0.1);
+    box-shadow: 0 4px 8px rgba(6, 123, 233, 0.1);
     width: 400px;
 }
 

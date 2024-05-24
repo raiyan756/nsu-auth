@@ -1,49 +1,22 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../../Providers/AuthProvider';
-import { NavLink, useLoaderData, useNavigate } from 'react-router-dom';
-import "./Books.css";
-import RequestBooks from './RequestBooks'; // Import RequestBooks component
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { useBook } from './BookContext';
+import "./Books.css";
 
 const Books = () => {
-    const { setSelectedBook } = useBook();
-    const { logIn } = useContext(AuthContext);
-    const navigate = useNavigate();
-   
+    const { setRequests, requests } = useBook();
     const books = useLoaderData();
 
-    const handleLogin = e => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-        logIn(email, password)
-            .then(result => {
-                navigate("/Books-admin");
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
     const handleRequestRent = (book) => {
-        setSelectedBook(book);
-      };
-
-   
-    
+        setRequests([...requests, { ...book, status: 'processing' }]);
+        //data fetching
+        //string declare=const status process
+        //asynic function
+        
+    };
 
     return (
         <div className="container">
-            <div className="login-section">
-                <h1 className="text-center mb-8">User Admin Login</h1>
-                <form onSubmit={handleLogin} className="login-form">
-                    <input className="input-field" type="email" name="email" placeholder="Enter Email" required />
-                    <input className="input-field" type="password" name="password" placeholder="Enter Password" required />
-                    <button className="btn-primary" type="submit">Login</button>
-                </form>
-            </div>
-         
             <div className="cards-section">
                 {books.map((book, index) => (
                     <div key={index} className="card w-96 bg-base-100 shadow-xl flex m-4">
@@ -54,16 +27,26 @@ const Books = () => {
                             <h2 className="card-title">Book Name: {book.bookname}</h2>
                             <h2 className="card-title">Book Location: {book.bookcode}</h2>
                             <h2 className="card-title">Availability: {book.availability}</h2>
-                            {/* Pass book data to handleRequestRent */}
                             <button className="btn btn-success" onClick={() => handleRequestRent(book)}>
-                <h2 className="card-title">Request For Rent</h2>
-              </button>
-                            {/* Render the pending button conditionally */}
+                                <h2 className="card-title">Request For Rent</h2>
+                            </button>
+                            {requests.some(request => request.bookname === book.bookname && request.status === 'processing') && (
+                                <div className="processing">
+                                    <p>Processing...</p>
+                                </div>
+                            )}
+                            {requests.some(request => request.bookname === book.bookname && request.status === 'approved') && (
+                                <div className="approved">
+                                    <p>Approved</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}
             </div>
-           
+            <div>
+                 {/* <NavLink to='/administration'><button className="btn btn-primary">Admin</button></NavLink>  */}
+            </div>
         </div>
     );
 };
