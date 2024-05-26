@@ -121,7 +121,7 @@ const Registration = () => {
                             {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be at least 6 characters</p>}
                         </div>
                         <div className="form-control mt-6">
-                            <input className="unique-button" type="submit" value="Sign Up" />
+                            <input className="unique-button bg-red-600" type="submit" value="Sign Up" />
                         </div>
                     </form>
                     <p className="ml-2 text-center">Already have an account? <Link to="/"><span className="text-indigo-700">Login</span></Link></p>

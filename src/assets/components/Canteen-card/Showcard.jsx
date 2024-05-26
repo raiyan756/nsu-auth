@@ -1,10 +1,11 @@
 // Showcard.jsx
 import React from 'react';
-import { NavLink, useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import './Showcard.css'; // Import CSS file for card styling
 
 const Showcard = () => {
     const cards = useLoaderData();
+    const navigate = useNavigate();
 
     // Check if cards is undefined or null
     if (!cards || cards.length === 0) {
@@ -13,6 +14,10 @@ const Showcard = () => {
 
     // Display only the latest card
     const latestCard = cards[cards.length - 1];
+
+    const handleAmount = (card) => {
+        navigate("/order-food", { state: { cardAmount: card.amount , cardholder:card} }); // Pass card.amount
+    };
 
     return (
         <div className="card-container">
@@ -24,11 +29,9 @@ const Showcard = () => {
                     <h2 className="card-title">Card Holder: {latestCard.cardholdername}</h2>
                     <p className="card-info">ID No: {latestCard.code}</p>
                     <p className="card-info">Amount: ${latestCard.amount}</p>
-                    
-                    <NavLink to='/order-food'><button className="btn btn-error">Make Purchase</button></NavLink>
+                    <button onClick={() => handleAmount(latestCard)} className="btn btn-error">Make Purchase</button>
                 </div>
             </div>
-            
         </div>
     );
 };

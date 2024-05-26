@@ -1,20 +1,21 @@
-import React, { useContext, useState } from 'react';
-
-import { useLoaderData, useNavigate } from 'react-router-dom';
-import "./Foodorder.css";
+// Foodorder.jsx
+import React, { useState } from 'react';
 import { FaShoppingBag } from "react-icons/fa";
-import { toast,ToastContainer } from 'react-toastify';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./Foodorder.css";
+
 const Foodorder = () => {
+    const location = useLocation();
     const foods = useLoaderData();
-    console.log(foods);
-    
     const navigate = useNavigate();
 
     // State to store selected foods
     const [selectedFoods, setSelectedFoods] = useState([]);
-
-   
+    const { cardAmount} = location.state;
+    const{cardholder}=location.state;
+    console.log(cardholder);
 
     // Function to handle adding a food to the cart
     const handleAddToCart = (food) => {
@@ -32,18 +33,15 @@ const Foodorder = () => {
 
     // Function to navigate to the "Selected Foods" route
     const handleViewFoods = () => {
-        navigate("/selected-foods", { state: { selectedFoods } });
+        navigate("/selected-foods", { state: { selectedFoods, cardAmount,cardholder} });
     };
 
     return (
         <div className="container">
             <ToastContainer></ToastContainer>
-           
-            
-         <div className="total-price">
-                <button className="btn bg-red-400" onClick={handleViewFoods}><FaShoppingBag className='w-14 h-8'>View</FaShoppingBag></button> {/* Button to navigate to "Selected Foods" route */}
+            <div className="total-price">
+                <button className="btn bg-red-400" onClick={handleViewFoods}><FaShoppingBag className='w-14 h-8'>View</FaShoppingBag></button>
             </div>
-     
             <div className="cards-section">
                 {foods.map((food, index) => (
                     <div key={index} className="card w-96 bg-base-100 shadow-xl flex m-4">
@@ -61,8 +59,6 @@ const Foodorder = () => {
                     </div>
                 ))}
             </div>
-
-            
         </div>
     );
 };
