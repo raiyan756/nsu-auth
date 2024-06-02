@@ -1,12 +1,10 @@
 import { useContext, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../Providers/AuthProvider";
-import { FcGoogle } from 'react-icons/fc';
-import { GoogleAuthProvider } from "firebase/auth";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import "./Login.css"
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from "../../../Providers/AuthProvider";
+import "./Login.css";
 
 const Login = () => {
     const { logIn, googleSignIn } = useContext(AuthContext);

@@ -15,7 +15,7 @@ const Foodorder = () => {
     const [selectedFoods, setSelectedFoods] = useState([]);
     const { cardAmount} = location.state;
     const{cardholder}=location.state;
-    console.log(cardholder);
+    //console.log(cardholder);
 
     // Function to handle adding a food to the cart
     const handleAddToCart = (food) => {

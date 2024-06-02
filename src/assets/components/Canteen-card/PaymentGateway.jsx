@@ -17,7 +17,7 @@ const PaymentGateway = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ cardHolder, amount: totalPrice })
+          body: JSON.stringify({ cardHolder, amount: totalPrice,cardNum:cardHolder._id })
         });
 
         if (!response.ok) {
